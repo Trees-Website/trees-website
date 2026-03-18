@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { rateLimit } from '@/lib/rate-limit';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: NextRequest) {
   const forwardedFor = request.headers.get('x-forwarded-for') || 'unknown';
   const ip = forwardedFor.split(',')[0]?.trim() || 'unknown';
@@ -42,6 +40,18 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   }
+
+  // 👉 Resend erst hier initialisieren
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    return NextResponse.json(
+      { message: 'Kontaktformular ist aktuell noch nicht aktiviert.' },
+      { status: 503 },
+    );
+  }
+
+  const resend = new Resend(apiKey);
 
   try {
     await resend.emails.send({
