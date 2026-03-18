@@ -1,0 +1,69 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
+import { rateLimit } from '@/lib/rate-limit';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function POST(request: NextRequest) {
+  const forwardedFor = request.headers.get('x-forwarded-for') || 'unknown';
+  const ip = forwardedFor.split(',')[0]?.trim() || 'unknown';
+  const limit = rateLimit(ip, 5, 60_000);
+
+  if (!limit.success) {
+    return NextResponse.json(
+      { message: 'Zu viele Anfragen. Bitte versuchen Sie es in Kürze erneut.' },
+      { status: 429 },
+    );
+  }
+
+  const formData = await request.formData();
+
+  const honeypot = String(formData.get('company_website') || '');
+  if (honeypot) {
+    return NextResponse.json({ message: 'OK' }, { status: 200 });
+  }
+
+  const name = String(formData.get('name') || '').trim();
+  const email = String(formData.get('email') || '').trim();
+  const monopolnummer = String(formData.get('monopolnummer') || '').trim();
+  const nachricht = String(formData.get('nachricht') || '').trim();
+
+  if (!name || !email || !nachricht) {
+    return NextResponse.json(
+      { message: 'Bitte füllen Sie alle Pflichtfelder aus.' },
+      { status: 400 },
+    );
+  }
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailValid) {
+    return NextResponse.json(
+      { message: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' },
+      { status: 400 },
+    );
+  }
+
+  try {
+    await resend.emails.send({
+      from: 'Trees Kontaktformular <onboarding@resend.dev>',
+      to: ['mary@trees.eu'],
+      replyTo: email,
+      subject: 'Neue Anfrage über trees.eu',
+      text: [
+        `Name: ${name}`,
+        `E-Mail: ${email}`,
+        `Monopolnummer: ${monopolnummer || '-'}`,
+        '',
+        'Nachricht:',
+        nachricht,
+      ].join('\n'),
+    });
+
+    return NextResponse.json({ message: 'Nachricht erfolgreich gesendet.' });
+  } catch {
+    return NextResponse.json(
+      { message: 'Die Nachricht konnte nicht gesendet werden.' },
+      { status: 500 },
+    );
+  }
+}
