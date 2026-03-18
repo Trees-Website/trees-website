@@ -159,7 +159,44 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-      </main>
+
+<footer id="impressum" className="border-t border-white/10 bg-black/80">
+  <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-10 lg:py-16">
+    <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <div className="text-xs uppercase tracking-[0.24em] text-white/45">Impressum</div>
+        <div className="mt-4 text-3xl tracking-tight">Pure Trees GmbH</div>
+      </div>
+
+      <div className="grid gap-6 text-sm leading-7 text-white/68 sm:grid-cols-2">
+        <div>
+          Weihburggasse 21/13
+          <br />
+          1010 Wien
+          <br />
+          Österreich
+        </div>
+        <div>
+          UID-Nummer: ATU74392007
+          <br />
+          Firmenbuchnummer: 510282s
+          <br />
+          Firmenbuchgericht: Handelsgericht Wien
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-8 border-t border-white/10 pt-8 text-sm leading-7 text-white/62">
+      Vertreten durch den Geschäftsführer Nikolas König-Simon
+      <div className="mt-4 text-white/48">
+        Das Rauchen dieses Produktes gefährdet Ihre Gesundheit.
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
     </>
   )
+  
 }
