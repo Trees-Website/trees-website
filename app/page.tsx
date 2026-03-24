@@ -5,17 +5,17 @@ import { ContactForm } from '../components/contact-form'
 import { SiteHeader } from '../components/site-header'
 
 export const metadata: Metadata = {
-  title: 'Trees | Großhändler für Hanfblüten & CBD in Österreich',
+  title: 'Trees | Großhändler für Hanfblüten in Österreich',
   description:
     'Trees ist ein österreichischer Großhändler für Hanfblüten. Vier ausgewählte Sorten CBD Blüten, Vertrieb über Trafiken in Österreich.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Trees | Großhändler für Hanfblüten & CBD in Österreich',
+    title: 'Trees | Großhändler für Hanfblüten in Österreich',
     description:
       'Vier ausgewählte Hanfblüten von Trees. Vertrieb über Trafiken in Österreich.',
-    url: 'https://trees.eu',
+    url: '/',
     siteName: 'Trees',
     locale: 'de_AT',
     type: 'website',
@@ -67,7 +67,7 @@ export default function HomePage() {
               <div className="relative h-[320px] w-full">
                 <Image
                   src="/Header-Trees_CBD_Hanf-2.jpg"
-                  alt="Trees Großhändler für Hanfblüten und CBD"
+                  alt="Trees Großhändler für Hanfblüten"
                   fill
                   className="object-cover"
                   priority

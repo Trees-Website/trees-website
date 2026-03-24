@@ -39,21 +39,24 @@ export function SiteHeader() {
       <div className="mx-auto w-full max-w-5xl px-5 pt-6 sm:px-6 lg:px-5">
         <div className="flex items-start justify-between">
           <a href="#top" className="flex items-center gap-3" aria-label="Trees Startseite">
-            <Image
-              src="/Trees_logo_white.svg"
-              alt="Trees"
-              width={132}
-              height={40}
-              priority
-              className="h-8 w-auto sm:h-9"
+            <img
+            src="/Trees_logo_white.svg"
+            alt="Trees"
+            className="h-8 w-auto sm:h-9"
             />
           </a>
 
           <nav className="hidden gap-8 pt-2 text-sm text-white/70 md:flex">
-            <a href="#about" className="transition hover:text-white">
+            <a
+              href="#about"
+              className="relative transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            >
               Über uns
             </a>
-            <a href="#kontakt" className="transition hover:text-white">
+            <a
+              href="#kontakt"
+              className="relative transition hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-[1px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+            >
               Kontakt
             </a>
           </nav>
