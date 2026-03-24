@@ -69,7 +69,7 @@ export function ContactForm() {
         name="name"
         autoComplete="name"
         placeholder="Name"
-        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition focus:border-white/30 focus:ring-1 focus:ring-white/20"
+        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
         required
       />
 
@@ -78,35 +78,46 @@ export function ContactForm() {
         name="email"
         autoComplete="email"
         placeholder="Email"
-        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition focus:border-white/30 focus:ring-1 focus:ring-white/20"
+        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
         required
       />
 
       <input
         name="monopolnummer"
-        placeholder="Monopolnummer"
-        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition focus:border-white/30 focus:ring-1 focus:ring-white/20"
+        placeholder="Monopolnummer (optional)"
+        className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
       />
 
       <textarea
         name="nachricht"
         placeholder="Nachricht"
-        className="min-h-[10rem] rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition focus:border-white/30 focus:ring-1 focus:ring-white/20"
+        className="min-h-[10rem] rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
         required
       />
 
-      <div className="pt-2">
+      <div className="pt-4">
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:scale-[1.02] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
+          className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-all duration-300 hover:scale-[1.02] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {isSubmitting ? 'Wird gesendet …' : 'Nachricht senden'}
+          {/* Subtiler Glow */}
+          <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4),transparent_70%)]" />
+          </span>
+
+          <span className="relative">
+            {isSubmitting ? 'Wird gesendet …' : 'Nachricht senden'}
+          </span>
         </button>
       </div>
 
       {status.message ? (
-        <p className={`text-sm ${status.success ? 'text-white/80' : 'text-red-300'}`}>
+        <p
+          className={`text-sm transition-opacity duration-300 ${
+            status.success ? 'text-white/70' : 'text-red-300'
+          }`}
+        >
           {status.message}
         </p>
       ) : null}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+
 import { ContactForm } from '../components/contact-form'
 import { SiteHeader } from '../components/site-header'
 
@@ -47,19 +48,20 @@ export default function HomePage() {
   return (
     <>
       <SiteHeader />
-
-      <main className="min-h-screen bg-black text-white antialiased">
-        <section className="py-12">
+      <main id="top" className="min-h-screen bg-black text-white antialiased">
+        <section className="pb-12 pt-28 sm:pt-32">
           <div className="mx-auto w-full max-w-5xl px-5">
             <div className="mb-10 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
               <div className="relative h-[320px] w-full">
                 <Image
-                  src="/Header-Trees-Hanfbluten.jpg"
+                  src="/Header-Trees_CBD_Hanf-2.jpg"
                   alt=""
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 80rem"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
               </div>
             </div>
 
@@ -80,7 +82,6 @@ export default function HomePage() {
 
             <div className="mt-12 max-w-xl">
               <h2 className="text-3xl">Vier Sorten Hanfblüten.</h2>
-
               <p className="mt-4 text-white/60 leading-relaxed">
                 Unser Sortiment umfasst vier ausgewählte Hanfblüten und ist über
                 Trafiken in Österreich erhältlich.
@@ -92,22 +93,25 @@ export default function HomePage() {
                 {cards.map((card) => (
                   <article
                     key={card.id}
-                    className="relative overflow-hidden rounded-[1.6rem] border border-white/10"
+                    className="group relative overflow-hidden rounded-[1.6rem] border border-white/10 transition-all duration-500 hover:border-white/30"
                   >
+                    <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)]" />
+                    </div>
+
                     <Image
                       src={card.image}
                       alt=""
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 50vw"
                     />
 
-                    <div className="relative flex h-[220px] flex-col justify-between p-6">
+                    <div className="relative z-20 flex h-[220px] flex-col justify-between p-6">
                       <div className="text-3xl">Trees</div>
-
                       <div className="text-[5.5rem]">
                         <CardNumber value={card.id} />
                       </div>
-
                       <div className="flex justify-between text-sm">
                         <span className="tracking-[0.2em]">2G</span>
                         <span>{card.name}</span>
@@ -120,7 +124,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="border-t border-white/10 py-20">
+        <section id="about" className="border-t border-white/10 py-20">
           <div className="mx-auto w-full max-w-5xl px-5">
             <div className="text-xs uppercase tracking-[0.24em] text-white/40">
               Über uns
@@ -130,18 +134,18 @@ export default function HomePage() {
               Erfahrung aus über sieben Jahren Hanfbranche.
             </h2>
 
-            <p className="mt-6 text-white/65 leading-relaxed max-w-3xl">
-              Trees wurde von den Brüdern Nikolas und Sebastian gegründet. Beide
-              sind seit mehr als sieben Jahren in der Hanfbranche tätig und haben
-              umfangreiche Erfahrung rund um die Hanfpflanze aufgebaut. In den
-              vergangenen Jahren lag der Fokus auf Kosmetikprodukten auf
+            <p className="mt-6 max-w-3xl leading-relaxed text-white/65">
+              Trees wurde von uns, den Brüdern Nikolas und Sebastian gegründet.
+              Wir sind seit mehr als sieben Jahren in der Hanfbranche tätig und
+              haben umfangreiche Erfahrung rund um die Hanfpflanze aufgebaut. In
+              den vergangenen Jahren lag unser Fokus bei Kosmetikprodukten auf
               Hanfbasis. Mit der neuen rechtlichen Situation in Österreich haben
               wir uns als Großhändler für Hanfblüten weiterentwickelt.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
+        <section id="kontakt" className="py-20">
           <div className="mx-auto w-full max-w-5xl px-5">
             <div className="rounded-[2rem] border border-white/10 bg-white/5 p-10">
               <div className="text-xs uppercase tracking-[0.24em] text-white/40">
@@ -160,43 +164,52 @@ export default function HomePage() {
           </div>
         </section>
 
-<footer id="impressum" className="border-t border-white/10 bg-black/80">
-  <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-10 lg:py-16">
-    <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-      <div>
-        <div className="text-xs uppercase tracking-[0.24em] text-white/45">Impressum</div>
-        <div className="mt-4 text-3xl tracking-tight">Pure Trees GmbH</div>
-      </div>
+        <footer id="impressum" className="border-t border-white/10 bg-black/80">
+          <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-10 lg:py-16">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+              <div>
+                <div className="text-xs uppercase tracking-[0.24em] text-white/45">
+                  Impressum
+                </div>
 
-      <div className="grid gap-6 text-sm leading-7 text-white/68 sm:grid-cols-2">
-        <div>
-          Weihburggasse 21/13
-          <br />
-          1010 Wien
-          <br />
-          Österreich
-        </div>
-        <div>
-          UID-Nummer: ATU74392007
-          <br />
-          Firmenbuchnummer: 510282s
-          <br />
-          Firmenbuchgericht: Handelsgericht Wien
-        </div>
-      </div>
-    </div>
+                <div className="mt-4 text-3xl tracking-tight">Pure Trees GmbH</div>
+              </div>
 
-    <div className="mt-8 border-t border-white/10 pt-8 text-sm leading-7 text-white/62">
-      Vertreten durch den Geschäftsführer Nikolas König-Simon
-      <div className="mt-4 text-white/48">
-        Das Rauchen dieses Produktes gefährdet Ihre Gesundheit.
-      </div>
-    </div>
-  </div>
-</footer>
+              <div className="grid gap-6 text-sm leading-7 text-white/68 sm:grid-cols-2">
+                <div>
+                  Weihburggasse 21/13
+                  <br />
+                  1010 Wien
+                  <br />
+                  Österreich
+                </div>
 
-</main>
+                <div>
+                  UID-Nummer: ATU74392007
+                  <br />
+                  Firmenbuchnummer: 510282s
+                  <br />
+                  Firmenbuchgericht: Handelsgericht Wien
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 border-t border-white/10 pt-8 text-sm leading-7 text-white/62">
+              Vertreten durch den Geschäftsführer Nikolas König-Simon
+
+              <div className="mt-4 text-white/48">
+                Das Rauchen dieses Produktes gefährdet Ihre Gesundheit.
+              </div>
+
+              <div className="mt-4">
+                <a href="/datenschutz" className="text-white/48 transition hover:text-white">
+                  Datenschutzerklärung
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
     </>
   )
-  
 }
