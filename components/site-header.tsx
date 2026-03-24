@@ -39,9 +39,12 @@ export function SiteHeader() {
       <div className="mx-auto w-full max-w-5xl px-5 pt-6 sm:px-6 lg:px-5">
         <div className="flex items-start justify-between">
           <a href="#top" className="flex items-center gap-3" aria-label="Trees Startseite">
-            <img
-            src="/Trees_logo_white.svg"
+            <Image
+            src="/Trees_logo_white.png"
             alt="Trees"
+            width={126}
+            height={36}
+            priority
             className="h-8 w-auto sm:h-9"
             />
           </a>
