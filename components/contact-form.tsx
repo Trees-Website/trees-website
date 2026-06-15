@@ -81,13 +81,13 @@ export function ContactForm() {
         className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
         required
       />
-
+{/*
       <input
         name="monopolnummer"
         placeholder="Monopolnummer (optional)"
         className="rounded-2xl border border-white/10 bg-black/40 px-4 py-4 text-base text-white outline-none placeholder:text-white/35 transition-all duration-300 focus:border-white/40 focus:bg-black/60 focus:ring-1 focus:ring-white/20"
       />
-
+*/}
       <textarea
         name="nachricht"
         placeholder="Nachricht"

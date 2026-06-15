@@ -66,7 +66,7 @@ export default function HomePage() {
             <div className="mb-10 overflow-hidden rounded-[2rem] border border-white/10 bg-white/5">
               <div className="relative h-[320px] w-full">
                 <Image
-                  src="/Header-Trees_CBD_Hanf-2.jpg"
+                  src="/Header-Trees_CBD_Hanf-3.jpg"
                   alt="Trees Großhändler für Hanfblüten"
                   fill
                   className="object-cover"

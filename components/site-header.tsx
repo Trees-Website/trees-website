@@ -40,7 +40,7 @@ export function SiteHeader() {
         <div className="flex items-start justify-between">
           <a href="#top" className="flex items-center gap-3" aria-label="Trees Startseite">
             <Image
-            src="/Trees_logo_white.png"
+            src="/Trees_logo_white.svg"
             alt="Trees"
             width={126}
             height={36}
