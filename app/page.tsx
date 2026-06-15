@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     'Trees ist ein österreichischer Großhändler für Hanfblüten. Vier ausgewählte Sorten CBD Blüten, Vertrieb über Trafiken in Österreich.',
   alternates: {
-    canonical: '/',
+    canonical: 'https://trees.eu/',
   },
   openGraph: {
     title: 'Trees | Großhändler für Hanfblüten in Österreich',
     description:
       'Vier ausgewählte Hanfblüten von Trees. Vertrieb über Trafiken in Österreich.',
-    url: '/',
+    url: 'https://trees.eu/',
     siteName: 'Trees',
     locale: 'de_AT',
     type: 'website',
@@ -88,14 +88,14 @@ export default function HomePage() {
             <p className="mt-6 max-w-2xl text-lg text-white/70">
               Trees ist ein österreichischer Großhändler für Hanfblüten. Die
               Produkte werden über Trafiken in Österreich vertrieben und stehen
-              für ein reduziertes Sortiment sowie langjährige Erfahrung im Umgang
+              für ein ausgewähltes Sortiment sowie langjährige Erfahrung im Umgang
               mit der Hanfpflanze.
             </p>
 
             <div className="mt-12 max-w-xl">
               <h2 className="text-3xl">Vier Sorten Hanfblüten.</h2>
               <p className="mt-4 text-white/60 leading-relaxed">
-                Unser Sortiment umfasst vier ausgewählte Hanfblüten und ist über
+                Unser Sortiment umfasst vier Premium-Hanfblüten und ist über
                 Trafiken in Österreich erhältlich.
               </p>
             </div>
